@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VORTEX HYPER | Quantum Fiber & 5G Ultra İnternet</title>
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --primary-glow: rgba(0, 242, 254, 0.5);
+            --secondary: #7928ca;
+            --accent: #ff0080;
+            --bg-dark: #030509;
+            --bg-card: rgba(13, 17, 28, 0.7);
+            --bg-card-hover: rgba(23, 31, 51, 0.85);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(0, 242, 254, 0.15);
+            --border-highlight: rgba(0, 242, 254, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo span, .speed-number {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Particles & Glow BG */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Top Cyber Bar */
+        .top-bar {
+            background: linear-gradient(90deg, #ff0080, #7928ca, #00f2fe);
+            background-size: 200% 200%;
+            animation: gradientShift 4s ease infinite;
+            color: #fff;
+            text-align: center;
+            padding: 10px 15px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1001;
+            text-shadow: 0 0 8px rgba(0,0,0,0.5);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Cyber Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(3, 5, 9, 0.85);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+            letter-spacing: 1.5px;
+        }
+
+        .logo i {
+            color: var(--primary);
+            filter: drop-shadow(0 0 10px var(--primary));
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.8; }
+        }
+
+        .logo span {
+            background: linear-gradient(45deg, #fff, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .cyber-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
+            padding: 12px 26px;
+            border-radius: 8px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 0 20px var(--primary-glow);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .cyber-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 35px var(--primary);
+            color: #000;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 1;
+            padding: 100px 8% 80px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 550px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .badge {
+            background: rgba(0, 242, 254, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Interactive Speedmeter Canvas Card */
+        .speed-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-highlight);
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(0, 242, 254, 0.2);
+            backdrop-filter: blur(20px);
+            text-align: center;
+            position: relative;
+        }
+
+        .speed-gauge {
+            position: relative;
+            width: 240px;
+            height: 240px;
+            margin: 0 auto;
+        }
+
+        .gauge-body {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 12px solid rgba(255,255,255,0.05);
+            border-top-color: var(--primary);
+            border-right-color: var(--accent);
+            animation: spinGauge 3s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+        }
+
+        @keyframes spinGauge {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(280deg); }
+        }
+
+        .speed-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 52px;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 20px var(--primary);
+        }
+
+        /* Live Sound Generator & Test Button */
+        .sound-trigger {
+            margin-top: 20px;
+            background: rgba(255, 0, 128, 0.15);
+            border: 1px solid var(--accent);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sound-trigger:hover {
+            background: var(--accent);
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        /* Packages Grid */
+        .section-padding {
+            padding: 90px 8%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .pkg-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px 30px;
+            position: relative;
+            transition: 0.4s;
+        }
+
+        .pkg-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary);
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.25);
+        }
+
+        .pkg-card.popular {
+            border-color: var(--accent);
+            box-shadow: 0 0 40px rgba(255, 0, 128, 0.3);
+            background: rgba(23, 15, 38, 0.85);
+            transform: scale(1.06);
+        }
+
+        .pkg-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .pkg-price {
+            font-size: 52px;
+            font-weight: 900;
+            color: #fff;
+            margin: 20px 0;
+        }
+
+        .pkg-price span {
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        .pkg-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .pkg-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pkg-features li i {
+            color: var(--primary);
+        }
+
+        /* Speed Comparison Table */
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .comp-table th, .comp-table td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comp-table th {
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--primary);
+            font-family: 'Orbitron';
+        }
+
+        .comp-table td:first-child {
+            text-align: left;
+            font-weight: 700;
+        }
+
+        /* Support & Contact Wrapper */
+        .support-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .c-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 22px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+        }
+
+        .c-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(0, 242, 254, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 24px;
+        }
+
+        .c-text a {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .support-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            padding: 45px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 15px;
+            background: rgba(3, 5, 9, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 22px 28px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .faq-item p {
+            display: none;
+            margin-top: 12px;
+            color: var(--text-muted);
+        }
+
+        .faq-item.active p {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #020306;
+            border-top: 1px solid var(--border-color);
+            padding: 60px 8% 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 992px) {
+            .hero, .packages-grid, .support-wrapper { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <!-- Cyber Announcement -->
+    <div class="top-bar">
+        ⚡ ULTRA QUANTUM 5G ALTYAPISI AKTİF! TAAHHÜTSÜZ MİNİMUM 250 TL'DEN BAŞLAYAN FİYATLAR!
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo" onclick="playWarpSound()">
+            <i class="fa-solid fa-atom"></i>
+            <span>VORTEX HYPER</span>
+        </a>
+        <nav>
+            <a href="#hakkimizda">Quantum Teknoloji</a>
+            <a href="#paketler">Paketler</a>
+            <a href="#karsilastirma">Karşılaştırma</a>
+            <a href="#destek">Canlı Destek</a>
+            <a href="#faq">SSS</a>
+        </nav>
+        <a href="#destek" class="cyber-btn" onclick="playWarpSound()"><i class="fa-solid fa-bolt"></i> Bağlantı Al</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-right">
+            <div class="hero-badges">
+                <span class="badge"><i class="fa-solid fa-wifi"></i> 5G & 2.4 GHz Çift Bant Mesh</span>
+                <span class="badge"><i class="fa-solid fa-infinity"></i> 10.000 GB Ultra Kota</span>
+                <span class="badge"><i class="fa-solid fa-microchip"></i> Wi-Fi 7 Ready</span>
+            </div>
+            <h1>IŞIK HIZININ <span>ÖTESİNE GECİN</span></h1>
+            <p>VORTEX HYPER Quantum Fiber altyapısı ile e-sporda 1ms altında ping, kesintisiz 8K yayın ve 10.000 GB hyper kotalı internet deneyimi.</p>
+            <div style="display:flex; gap:15px;">
+                <a href="#paketler" class="cyber-btn" onclick="playWarpSound()"><i class="fa-solid fa-rocket"></i> Paket Seç</a>
+                <button class="sound-trigger" onclick="runSpeedTest()"><i class="fa-solid fa-gauge-high"></i> Canlı Hız Testi Yap</button>
+            </div>
+        </div>
+
+        <div class="hero-visual" data-aos="fade-left">
+            <div class="speed-card">
+                <h3 style="color:var(--text-muted); font-size:14px; margin-bottom:20px;">VORTEX QUANTUM SPEEDTEST</h3>
+                <div class="speed-gauge">
+                    <div class="gauge-body"></div>
+                    <div class="speed-number" id="liveSpeed">984</div>
+                </div>
+                <p style="color:var(--primary); font-size:14px; font-weight:800; margin-top:15px;">Mbps HYPER SPEED</p>
+                <div style="display:flex; justify-content:space-around; margin-top:25px; background:rgba(0,0,0,0.4); padding:12px; border-radius:12px;">
+                    <div><small style="color:#888">Ping</small><br><strong style="color:#00f2fe">0.8 ms</strong></div>
+                    <div><small style="color:#888">Jitter</small><br><strong style="color:#00f2fe">0.1 ms</strong></div>
+                    <div><small style="color:#888">Upload</small><br><strong style="color:#ff0080">500 Mbps</strong></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="section-padding" id="paketler">
+        <div class="section-header" data-aos="fade-up">
+            <h2>HYPER İNTERNET PAKETLERİ</h2>
+            <p>Taahhütsüz, cezasız ve yüksek kotalı paketlerimiz ile tanışın. Minimum paket 250 TL'den başlar!</p>
+        </div>
+
+        <div class="packages-grid">
+            <!-- Package 1 (Minimum Price 250 TL) -->
+            <div class="pkg-card" data-aos="fade-up" data-aos-delay="100">
+                <h3 style="font-size:22px; font-weight:800;">Hyper Başlangıç</h3>
+                <div class="pkg-price">250 TL <span>/ Ay</span></div>
+                <ul class="pkg-features">
+                    <li><i class="fa-solid fa-check"></i> <strong>2.500 GB</strong> Yüksek Kota</li>
+                    <li><i class="fa-solid fa-check"></i> 2.4 GHz & 5G Standart Dual Band</li>
+                    <li><i class="fa-solid fa-check"></i> 250 Mbps İndirme Hızı</li>
+                    <li><i class="fa-solid fa-check"></i> Taahhütsüz Kullanım</li>
+                    <li><i class="fa-solid fa-check"></i> Ücretsiz Kurulum</li>
+                </ul>
+                <a href="#destek" class="cyber-btn" style="width:100%; justify-content:center;" onclick="playWarpSound()">Satın Al</a>
+            </div>
+
+            <!-- Package 2 (User Main Request - Popular) -->
+            <div class="pkg-card popular" data-aos="fade-up" data-aos-delay="200">
+                <div class="pkg-badge">EN ÇOK TERCİH EDİLEN</div>
+                <h3 style="font-size:24px; font-weight:800; color:#fff;">VORTEX CANAVAR 5G</h3>
+                <div class="pkg-price" style="color:var(--primary)">350 TL <span>/ Ay</span></div>
+                <ul class="pkg-features">
+                    <li><i class="fa-solid fa-bolt" style="color:var(--accent)"></i> <strong>10.000 GB</strong> Ultra Hyper Kota</li>
+                    <li><i class="fa-solid fa-bolt" style="color:var(--accent)"></i> <strong>5G & 2.4 GHz</strong> Çift Bant Ultra Mesh</li>
+                    <li><i class="fa-solid fa-bolt" style="color:var(--accent)"></i> <strong>1000 Mbps</strong> Maksimum Fiber Hız</li>
+                    <li><i class="fa-solid fa-bolt" style="color:var(--accent)"></i> E-Spor Ultra Düşük Ping (0.8 ms)</li>
+                    <li><i class="fa-solid fa-bolt" style="color:var(--accent)"></i> Ücretsiz Wi-Fi 7 Destekli Modem</li>
+                    <li><i class="fa-solid fa-bolt" style="color:var(--accent)"></i> 7/24 VIP Özel Müşteri Temsilcisi</li>
+                </ul>
+                <a href="#destek" class="cyber-btn" style="width:100%; justify-content:center; background:linear-gradient(135deg, var(--accent), var(--secondary)); color:#fff;" onclick="playWarpSound()">Hemen Başvur</a>
+            </div>
+
+            <!-- Package 3 -->
+            <div class="pkg-card" data-aos="fade-up" data-aos-delay="300">
+                <h3 style="font-size:22px; font-weight:800;">Quantum Pro Infinite</h3>
+                <div class="pkg-price">550 TL <span>/ Ay</span></div>
+                <ul class="pkg-features">
+                    <li><i class="fa-solid fa-check"></i> <strong>Sınırsız / Kotasız</strong> Quantum Hız</li>
+                    <li><i class="fa-solid fa-check"></i> 5G & Dual Mesh Wi-Fi 7</li>
+                    <li><i class="fa-solid fa-check"></i> 1000 Mbps Simetrik Upload/Download</li>
+                    <li><i class="fa-solid fa-check"></i> Statik IP & Oyun Sunucusu Port Açma</li>
+                    <li><i class="fa-solid fa-check"></i> Yerinde 1 Saat İçinde Teknik Servis</li>
+                </ul>
+                <a href="#destek" class="cyber-btn" style="width:100%; justify-content:center;" onclick="playWarpSound()">Satın Al</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speed Comparison Table -->
+    <section class="section-padding" id="karsilastirma" data-aos="fade-up">
+        <div class="section-header">
+            <h2>NEDEN VORTEX HYPER?</h2>
+            <p>Geleneksel internet sağlayıcıları ile VORTEX HYPER farkını görün.</p>
+        </div>
+        <table class="comp-table">
+            <thead>
+                <tr>
+                    <th>Özellik</th>
+                    <th>Standart Şirketler</th>
+                    <th>VORTEX HYPER</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Maksimum Kota</td>
+                    <td>500 - 1000 GB</td>
+                    <td><strong style="color:var(--primary)">10.000 GB Ultra Kota</strong></td>
+                </tr>
+                <tr>
+                    <td>Kablosuz Bant Desteği</td>
+                    <td>Sadece 2.4 GHz</td>
+                    <td><strong style="color:var(--primary)">5G + 2.4 GHz Çift Bant Mesh</strong></td>
+                </tr>
+                <tr>
+                    <td>Ping Süreleri</td>
+                    <td>25 - 45 ms</td>
+                    <td><strong style="color:var(--accent)">0.8 - 2 ms (E-Spor Modu)</strong></td>
+                </tr>
+                <tr>
+                    <td>Minimum Fiyat</td>
+                    <td>Yüksek Yıllık Zamlar</td>
+                    <td><strong style="color:var(--primary)">250 TL Sabit Fiyat Garantisi</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Support Section -->
+    <section class="section-padding" id="destek">
+        <div class="support-wrapper">
+            <div class="support-info" data-aos="fade-right">
+                <h2 style="font-size:36px; font-weight:900; margin-bottom:20px;">7/24 İLETIŞIM & DESTEK</h2>
+                <p style="color:var(--text-muted); margin-bottom:30px;">Sorularınız veya başvuru talepleriniz için bize ulaşın. Mesajınız doğrudan sistem mimarımıza iletilir.</p>
+                
+                <div class="c-item">
+                    <div class="c-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                    <div class="c-text">
+                        <small style="color:var(--text-muted); display:block;">MÜŞTERİ HİZMETLERİ & WHATSAPP</small>
+                        <a href="tel:05457323259">0545 732 32 59</a>
+                    </div>
+                </div>
+
+                <div class="c-item">
+                    <div class="c-icon"><i class="fa-solid fa-envelope-circle-check"></i></div>
+                    <div class="c-text">
+                        <small style="color:var(--text-muted); display:block;">OTOMATİK BİLDİRİM E-POSTASI</small>
+                        <a href="mailto:emirkula32@gmail.com">emirkula32@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="support-form" data-aos="fade-left">
+                <!-- Formspree Entegrasyonu -->
+                <form action="https://formspree.io/f/emirkula32@gmail.com" method="POST" onsubmit="playWarpSound()">
+                    <div class="form-group">
+                        <label for="name">Adınız Soyadınız</label>
+                        <input type="text" id="name" name="name" required placeholder="Örn: Emir Kula">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon Numaranız</label>
+                        <input type="tel" id="phone" name="phone" required value="05457323259">
+                    </div>
+                    <div class="form-group">
+                        <label for="package">Seçmek İstediğiniz Paket</label>
+                        <select id="package" name="package">
+                            <option value="VORTEX CANAVAR 5G (350 TL - 10.000 GB)">VORTEX CANAVAR 5G - 350 TL / 10.000 GB</option>
+                            <option value="Hyper Başlangıç (250 TL)">Hyper Başlangıç - 250 TL</option>
+                            <option value="Quantum Pro Infinite (550 TL)">Quantum Pro Infinite - 550 TL</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mesajınız / Adres Bilginiz</label>
+                        <textarea id="message" name="message" rows="4" required placeholder="Abonelik başvurusu yapmak istiyorum..."></textarea>
+                    </div>
+                    <button type="submit" class="cyber-btn" style="width:100%; justify-content:center; background:linear-gradient(135deg, var(--primary), var(--accent));">
+                        <i class="fa-solid fa-paper-plane"></i> Başvuruyu Gönder
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section-padding" id="faq" data-aos="fade-up">
+        <div class="section-header">
+            <h2>SIKÇA SORULAN SORULAR</h2>
+        </div>
+        <div style="max-width:800px; margin:0 auto;">
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h4 style="font-weight:800; display:flex; justify-content:space-between;">10.000 GB Kota Biterse Ne Olur? <i class="fa-solid fa-chevron-down"></i></h4>
+                <p>10.000 GB kota standart bir ev kullanıcısının tüketemeyeceği kadar büyüktür. Dolması durumunda bağlantınız kesilmez, ek fatura yansıtılmaz.</p>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <h4 style="font-weight:800; display:flex; justify-content:space-between;">5G ve 2.4 GHz Teknolojisi Nasıl Çalışır? <i class="fa-solid fa-chevron-down"></i></h4>
+                <p>Verdiğimiz akıllı modem hem 2.4 GHz (uzak odalarda yüksek çekim gücü) hem de 5G (modemin yanında ışık hızında e-spor pingsiz erişim) frekansını tek ağ altında birleştirir.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="text-align:center;">
+            <a href="#" class="logo" style="justify-content:center; margin-bottom:15px;">
+                <i class="fa-solid fa-atom"></i>
+                <span>VORTEX HYPER</span>
+            </a>
+            <p style="color:var(--text-muted); font-size:14px;">&copy; 2026 VORTEX HYPER Quantum İnternet Hizmetleri A.Ş. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- Particles.js & AOS JS -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Init AOS Animations
+        AOS.init({ duration: 800, once: true });
+
+        // Particles Background Config
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60 },
+                "color": { "value": "#00f2fe" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3 },
+                "size": { "value": 3 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#7928ca", "opacity": 0.3, "width": 1 },
+                "move": { "enable": true, "speed": 2 }
+            }
+        });
+
+        // Web Audio API - Dynamic Synthesizer Sound Effects
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playWarpSound() {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.15);
+            
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+            
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.15);
+        }
+
+        // Live Interactive Speed Test Generator
+        function runSpeedTest() {
+            playWarpSound();
+            const speedEl = document.getElementById('liveSpeed');
+            let counter = 0;
+            const target = Math.floor(Math.random() * (995 - 950 + 1)) + 950;
+            const interval = setInterval(() => {
+                counter += 35;
+                if (counter >= target) {
+                    counter = target;
+                    clearInterval(interval);
+                }
+                speedEl.innerText = counter;
+            }, 30);
+        }
+
+        // FAQ Toggle
+        function toggleFaq(el) {
+            playWarpSound();
+            el.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
